@@ -3,6 +3,9 @@ Pacer take home challenge
 
 ## Task 1: Simple Backend Endpoint
 
+### Live API endpoint
+[luqmaansu.pythonanywhere.com/scores/api/get_score/](https://luqmaansu.pythonanywhere.com/scores/api/get_score/)
+
 ### Local Quickstart
 If you want to try to run this locally
 1. Navigate to the project directory where `manage.py` is located
@@ -155,9 +158,9 @@ Usually the most nervous part, execute the changes, run tests, and monitor usage
 
 ## Bonus Task: Deployment to cloud
 
-The application is deployed on PythonAnywhere, a Platform-as-a-Service application by Anaconda.
+The application is deployed on [PythonAnywhere](https://www.pythonanywhere.com/user/luqmaansu/), a Platform-as-a-Service application by Anaconda, with PostgreSQL database hosted on [ElephantSQL](https://www.elephantsql.com/).
 - API endpoint [luqmaansu.pythonanywhere.com/scores/api/get_score/](https://luqmaansu.pythonanywhere.com/scores/api/get_score/)
-- Admin panel [luqmaansu.pythonanywhere.com/admin](https://luqmaansu.pythonanywhere.com/admin)
+- Admin panel [luqmaansu.pythonanywhere.com/admin](https://luqmaansu.pythonanywhere.com/admin/)
 
 ---
 End
