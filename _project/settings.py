@@ -37,6 +37,7 @@ DEBUG = env('DEBUG')
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
+    'luqmaansu.pythonanywhere.com',
 ]
 
 # Application definition
