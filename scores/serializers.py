@@ -9,8 +9,8 @@ def calculate_score(input_value):
 
 
 class ScoreSerializer(serializers.ModelSerializer):
-    # To use user_id number directly instead of User dropdown
-    user_id = serializers.IntegerField()
+    # Exclude from API form, but include in returned response, and automatically assign this value via create() override
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
 
     # Field included only in browsable API form, but not actually a part of the Score model
     input_value = serializers.FloatField(write_only=True)
@@ -20,23 +20,13 @@ class ScoreSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Score
-        fields = ["user_id", "input_value", "score"]
-
-    def validate_user_id(self, value):
-        # If user_id is supplied, make sure the user instance exists
-        if value and not User.objects.filter(pk=value).exists():
-            raise serializers.ValidationError(f"User with id '{value}' does not exist.")
-
-        # Explicit checking to allow empty user_id -> None
-        elif not value:
-            value = None
-
-        return value
+        fields = ["user", "input_value", "score"]
 
     def create(self, validated_data):
-        # Use user_id to get the User instance
-        user_id = validated_data.get("user_id")
-        user = User.objects.filter(pk=user_id).first() or None
+        # If user is not logged in, record user as null
+        user = self.context["request"].user
+        if not user.is_authenticated:
+            user = None
 
         # Use input_value to calculate score
         input_value = validated_data.get("input_value")

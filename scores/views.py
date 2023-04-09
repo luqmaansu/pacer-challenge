@@ -5,4 +5,4 @@ from rest_framework.permissions import IsAuthenticated
 
 class ScoreCreateView(generics.CreateAPIView):
     serializer_class = ScoreSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
