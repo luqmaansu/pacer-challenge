@@ -169,6 +169,8 @@ AUTH_USER_MODEL = 'accounts.User'
 
 # Disable DRF browsable API in production
 if not DEBUG:
-    DEFAULT_RENDERER_CLASSES = (
-        "rest_framework.renderers.JSONRenderer",
-    )
+    REST_FRAMEWORK = {
+        'DEFAULT_RENDERER_CLASSES': (
+            'rest_framework.renderers.JSONRenderer',
+        )
+    }
