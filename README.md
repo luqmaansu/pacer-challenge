@@ -6,6 +6,11 @@ Pacer take home challenge
 ### Live API endpoint
 [luqmaansu.pythonanywhere.com/scores/api/get_score/](https://luqmaansu.pythonanywhere.com/scores/api/get_score/)
 
+Quick test with httpie
+```cmd
+http POST http://luqmaansu.pythonanywhere.com/scores/api/get_score/ input_value=1
+```
+
 ### Local Quickstart
 If you want to try to run this locally
 1. Navigate to the project directory where `manage.py` is located
