@@ -4,22 +4,28 @@ Pacer take home challenge
 ## Task 1: Simple Backend Endpoint
 
 ### Live API endpoint
-[luqmaansu.pythonanywhere.com/scores/api/get_score/](https://luqmaansu.pythonanywhere.com/scores/api/get_score/)
+If you want to test this live in the cloud;
 
-Quick test with httpie
-```cmd
-http POST http://luqmaansu.pythonanywhere.com/scores/api/get_score/ input_value=1 user=1
-```
+1. [luqmaansu.pythonanywhere.com/scores/api/get_score/](https://luqmaansu.pythonanywhere.com/scores/api/get_score/)
+2. Quick test with httpie
+    ```cmd
+    http POST http://luqmaansu.pythonanywhere.com/scores/api/get_score/ input_value=1 user=1
+    ```
 
 ### Local Quickstart
-If you want to try to run this locally
+If you want to try to run this locally;
 1. Navigate to the project directory where `manage.py` is located
 2. Create and enter virtual environment `pip -m venv venv`
 3. Install package dependencies `pip install -r requirements.txt`
-4. Run the development server `py manage.py runserver`
-5. Create and run migrations `py manage.py makemigrations && py manage.py migrate`
-6. Open endpoint URL `http://<host>/scores/api/get_score/` in browser
-7. Enter a number in `input_value` field, optionally select a `user`, and try to post it
+4. Create an `.env` file with sample values:
+    ```
+    DEBUG=True
+    SECRET_KEY=q!W-5"I5QErgfe_kD[CjPY1=^zg>4+:?~=88SXowVu>kgdap3l^ukVO..]
+    ```
+5. Run the development server `py manage.py runserver`
+6. Create and run migrations `py manage.py makemigrations && py manage.py migrate`
+7. Open endpoint URL `http://<host>/scores/api/get_score/` in browser
+8. Enter a number in `input_value` field, optionally select a `user`, and try to post it
 
 ### API endpoint
 1. A simple Python Django app was developed that has an API endpoint at `/scores/api/get_score/`. The API was created using [Django REST Framework](https://github.com/encode/django-rest-framework). This endpoint can accessed via `POST` request and does the followings:
