@@ -45,7 +45,7 @@ DATABASES = {
 ### Testing
 The endpoint was tested using 3 methods:
 1. DRF browsable API
-    ![alt text](/Screenshot%202023-04-09%20165700.png)
+    ![alt text](/readme/images/Screenshot%202023-04-09%20165700.png)
 2. Using [HTTPie](https://github.com/httpie/httpie)
     ```cmd
     >> http POST http://127.0.0.1:8000/scores/api/get_score/ input_value=1
@@ -96,7 +96,7 @@ An Admin panel was created that enables the user to see the list of scores. To a
     ```
 2. Go to `/admin/` in the URL and log in
 
-    Depending on the permission granted, permitted staff users can also access the Users database, and some can also be granted permission either to view, create, edit, delete, or any combination of those operations on any table (e.g., Users, or Scores). ![alt text](/Screenshot%202023-04-09%20210017.png)
+    Depending on the permission granted, permitted staff users can also access the Users database, and some can also be granted permission either to view, create, edit, delete, or any combination of those operations on any table (e.g., Users, or Scores). ![alt text](/readme/images/Screenshot%202023-04-09%20210017.png)
 
     There's a tonne of further customizations that can be done here, but as per task instruction, suffice to create a simple admin panel with some basic customizations. Note that there is a custom filter function at the right sidebar.
 
