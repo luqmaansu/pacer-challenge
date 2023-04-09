@@ -163,8 +163,8 @@ Execute the proposed changes on the database. If there are any errors, troublesh
 ### 8. Run tests and monitor use
 Usually the second most nervous part, run the tests to ensure all other behaviours are still working as expected.
 
-### 9. Run migrations in production, run tests, and monitor usage
-Usually the most nervous part, execute the changes, run tests, and monitor usage in the actual production environment.
+### 9. Run migrations in production and monitor usage
+Usually the most nervous part, execute the changes and monitor usage in the actual production environment.
 
 
 ## Bonus Task: Deployment to cloud
