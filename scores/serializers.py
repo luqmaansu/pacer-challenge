@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from scores.models import Score
+from accounts.models import User
 
 
 def calculate_score(input_value):
@@ -13,7 +14,6 @@ class ScoreSerializer(serializers.ModelSerializer):
 
     # Fields to exclude from API form, but include in returned response, and automatically assign this value via create() override
     id = serializers.IntegerField(read_only=True)
-    user = serializers.PrimaryKeyRelatedField(read_only=True)
     score = serializers.FloatField(read_only=True)
     date_submitted = serializers.DateTimeField(read_only=True)
 
@@ -28,10 +28,9 @@ class ScoreSerializer(serializers.ModelSerializer):
         ]
 
     def create(self, validated_data):
-        # If user is not logged in, record user as null
-        user = self.context["request"].user
-        if not user.is_authenticated:
-            user = None
+
+        # Get user instance
+        user = validated_data.get("user")
 
         # Use input_value to calculate score
         input_value = validated_data.get("input_value")
