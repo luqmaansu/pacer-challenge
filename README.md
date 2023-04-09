@@ -3,7 +3,19 @@ Pacer take home challenge
 
 ## Task 1: Simple Backend Endpoint
 
-1. A simple Python Django app was developed that has an API endpoint at `/scores/api/get_score/`. This end point can accessed via `POST` request and does the followings:
+### Local Quickstart
+
+1. Navigate to the project directory where `manage.py` is located
+2. Create and enter virtual environment `pip -m venv venv`
+3. Install package dependencies `pip install -r requirements.txt`
+4. Run the development server `py manage.py runserver`
+5. Create and run migrations `py manage.py makemigrations && py manage.py migrate`
+6. Open endpoint URL `http://<host>/scores/api/get_score/` in browser
+7. Enter a number in `input_value` field and try to post it
+    ![alt text](/Screenshot%202023-04-09%20165700.png)
+
+### Details
+1. A simple Python Django app was developed that has an API endpoint at `/scores/api/get_score/`. The API was created using [Django REST Framework](https://github.com/encode/django-rest-framework). This end point can accessed via `POST` request and does the followings:
     1. Accepts an input parameter `input_value`
     2. Calculates `score` using a custom formula
         - At the moment, the formula is simply `score = input_value + 1`
@@ -12,7 +24,24 @@ Pacer take home challenge
         - If the user is not authenticated, the `user` field will be `None`
         - `date_submitted` will be automatically assigned with the current date time
 
-2. The endpoint was tested using 3 methods:
+2. Database
+    ```python
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        },
+        'postgres': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': '<name>',
+            'USER': '<user>',
+            'PASSWORD': '<password>',
+            'HOST': '<host>',
+        },
+    }
+    ```
+
+3. The endpoint was tested using 3 methods:
     1. DRF browsable API
     2. Using httpie
         ```bash
@@ -42,3 +71,7 @@ Pacer take home challenge
         >> py manage.py test
 
         ```
+
+## Task 2: Admin Panel
+
+## Task 3: Database Migration
