@@ -24,7 +24,10 @@ SECRET_KEY = 'django-insecure-gxu^#-&9u-ru-^51qinx6y(0!d(#k8eqk^03@e3%j^ss)j!kxq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+]
 
 # Application definition
 
@@ -48,6 +51,20 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+# Set this to True to enable the Debug Toolbar, and False to disable it
+DEBUG_TOOLBAR_ENABLED = False
+
+if DEBUG_TOOLBAR_ENABLED:
+    INSTALLED_APPS += ['debug_toolbar']
+    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
+
+# Django debug toolbar
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
 ]
 
 ROOT_URLCONF = '_project.urls'
@@ -78,9 +95,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
+    'postgres': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'jhnxwmoj',
+        'USER': 'jhnxwmoj',
+        'PASSWORD': 'dxi7n6QB9y5pFAruCAbD_Gl55Wj5kxrU',
+        'HOST': 'tiny.db.elephantsql.com',
+    },
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
