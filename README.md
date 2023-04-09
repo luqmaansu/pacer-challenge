@@ -8,7 +8,7 @@ Pacer take home challenge
 
 Quick test with httpie
 ```cmd
-http POST http://luqmaansu.pythonanywhere.com/scores/api/get_score/ input_value=1
+http POST http://luqmaansu.pythonanywhere.com/scores/api/get_score/ input_value=1 user=1
 ```
 
 ### Local Quickstart
@@ -19,16 +19,16 @@ If you want to try to run this locally
 4. Run the development server `py manage.py runserver`
 5. Create and run migrations `py manage.py makemigrations && py manage.py migrate`
 6. Open endpoint URL `http://<host>/scores/api/get_score/` in browser
-7. Enter a number in `input_value` field and try to post it
+7. Enter a number in `input_value` field, optionally select a `user`, and try to post it
 
 ### API endpoint
 1. A simple Python Django app was developed that has an API endpoint at `/scores/api/get_score/`. The API was created using [Django REST Framework](https://github.com/encode/django-rest-framework). This endpoint can accessed via `POST` request and does the followings:
-    1. Accepts an input parameter `input_value`
+    1. Accepts input parameters `input_value` and `user` (id number)
     2. Calculates `score` using a custom formula
         - At the moment, the formula is simply `score = input_value + 1`
     3. Records the user and result in the database
         - The fields are `id`, `user`, `score`, and `date_submitted`
-        - If the user is not authenticated, the `user` field will be `None`
+        - If the `user` id does not correspond to an existing user, an error will be returned
         - `date_submitted` will be automatically assigned with the current date time
 
 ### Database
