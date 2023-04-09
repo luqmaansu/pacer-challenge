@@ -24,22 +24,22 @@ If you want to try to run this locally
         - `date_submitted` will be automatically assigned with the current date time
 
 ### Database
-The default database used is sqlite for speedy development and testing purposes. However, a placeholder to a postgres database is provided in the `settings.py` file. To switch, switch the `'default'` key to the second one, and replace the first one with anything else, e.g., `'dev'`, and use valid credentials for the postgres database.
+The default database uses SQLite in development (signalled by when `DEBUG == True`), and uses a live PostgreSQL in the cloud in production (when `DEBUG == False`). Note that the database details are hidden in an environment variable using [django-environ](https://github.com/joke2k/django-environ) package.
 
 ```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    },
-    'postgres': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '<name>',
-        'USER': '<user>',
-        'PASSWORD': '<password>',
-        'HOST': '<host>',
-    },
-}
+if DEBUG == True:
+    # Development database
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        },
+    }
+else:
+    # Production database
+    DATABASES = {
+        'default': env.db()
+    }
 ```
 
 ### Testing
@@ -92,7 +92,7 @@ An Admin panel was created that enables the user to see the list of scores. To a
 1. Create a superuser
     ```bash
     >> py manage.py createsuperuser
-    # Follow the prompt and enter credentials
+    # Follow the prompts and enter credentials
     ```
 2. Go to `/admin/` in the URL and log in
 
@@ -151,6 +151,13 @@ Usually the second most nervous part, run the tests to ensure all other behaviou
 
 ### 9. Run migrations in production, run tests, and monitor usage
 Usually the most nervous part, execute the changes, run tests, and monitor usage in the actual production environment.
+
+
+## Bonus Task: Deployment to cloud
+
+The application is deployed on PythonAnywhere, a Platform-as-a-Service application by Anaconda.
+- API endpoint [luqmaansu.pythonanywhere.com/scores/api/get_score/](https://luqmaansu.pythonanywhere.com/scores/api/get_score/)
+- Admin panel [luqmaansu.pythonanywhere.com/admin](https://luqmaansu.pythonanywhere.com/admin)
 
 ---
 End
